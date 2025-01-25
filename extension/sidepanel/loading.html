@@ -1,5 +1,69 @@
-<html>
-	<body>
-		<h1>Hello world</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="index.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+	<title>Loading...</title>
+</head>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		height: 100%;
+		min-width: 360px;
+		font-family: "Inter", serif;
+		font-optical-sizing: auto;
+		font-style: normal;
+	}
+
+	.loader {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		background-color: #0f1a3a;
+		color: white;
+	}
+</style>
+
+<body>
+	<div class="loader">
+		<div class="images">
+			<img id="fire" src="images/fire.png" alt="">
+			<img id="paper" src="images/paper.png" alt="">
+		</div>
+		<h1 id="loading">Loading...</h1>
+		<script>
+			numZeros = 0;
+			window.setInterval(function () {
+				var loadingElem = document.getElementById("loading");
+				if (numZeros > 3) {
+					loadingElem.innerText = "Loading";
+				}
+				else {
+					loadingElem += ".";
+					numZeros++;
+				}
+
+			}, 100);
+		</script>
+
+	</div>
+</body>
+
 </html>
