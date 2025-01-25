@@ -1,6 +1,7 @@
-from typing import Union
-from fastapi import FastAPI
+from typing import Optional
+from fastapi import FastAPI, HTTPException
 from database import RecordForm, Record, create_db_and_tables, SessionDep
+from sqlmodel import select
 from dotenv import load_dotenv
 import os
 
@@ -38,5 +39,16 @@ def generation_post(record: RecordForm, session: SessionDep) -> Record:
     session.add(record)
     session.commit()
     session.refresh(record)
+
+    return {"message": "success"}
+
+
+@app.get("/generation")
+def generation_get(domain: str, session: SessionDep) -> Optional[Record]:
+    query = select(Record).where(Record.domain == domain)
+    results = session.exec(query)
+    record = results.first()
+    if not record:
+        raise HTTPException(status_code=404, detail="Record not found")
 
     return record
