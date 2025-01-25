@@ -8,14 +8,5 @@ cards.forEach((card) => {
         c.classList.remove("open");
       }
     });
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs.length > 0) {
-        const currentTab = tabs[0];
-        console.log(currentTab.url || "No active tab found!");
-      } else {
-        console.log("No active tab!");
-      }
-    });
   });
 });
