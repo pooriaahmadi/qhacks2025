@@ -14,7 +14,7 @@ import {
 //
 // It is only OK to put your API key into this file if you're the only
 // user of your extension or for testing.
-const apiKey = '...';
+const apiKey = '';
 
 let genAI = null;
 let model = null;
