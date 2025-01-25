@@ -6,6 +6,7 @@ import fuckaroundandfindout as fafo
 from dotenv import load_dotenv
 import os
 import json
+
 load_dotenv()
 
 COHERE_KEY = os.environ["COHERE_KEY"]
@@ -33,15 +34,20 @@ def root():
 
 @app.post("/generation")
 def generation_post(record: RecordForm, session: SessionDep) -> Record:
-    response = fafo.TOS_json(record.text)
-    record = Record(domain=record.domain, response=response, text=record.text)
+    query = select(Record).where(Record.domain == record.domain)
+    
+    if query:
+        return {"message": "domain exists in database"}
+    else:
+        response = fafo.TOS_json(record.text)
+        record = Record(domain=record.domain, response=response, text=record.text)
 
-    # Save in the database
-    session.add(record)
-    session.commit()
-    session.refresh(record)
+        # Save in the database
+        session.add(record)
+        session.commit()
+        session.refresh(record)
 
-    return {"message": "success"}
+        return {"message": "success"}
 
 
 @app.get("/generation")
