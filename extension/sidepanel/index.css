@@ -1,34 +1,68 @@
-body {
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   margin: 0;
   padding: 0;
   text-align: center;
   background-color: #0f1a3a;
   color: white;
+  min-width: 360px;
 }
 
-h1 {
-  margin-top: 10px;
-  font-size: 24px;
-}
 
-p {
-  font-size: 14px;
-  margin: 10px;
-}
 
 .container {
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container > div >h4 {
+  font-size: 16px;
+}
+
+.container > div > h1 {
+  font-size: 40px;
+}
+
+.container > div> img {
+  width: 53px;
+  height: 61px;
 }
 
 .card {
   border-radius: 5px;
-  margin: 10px auto;
   padding: 15px;
-  width: 90%;
   text-align: center;
   color: white;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  gap: 13px;
+}
+.card h2 {
+  font-size: 16px;
+  color: black;
 }
 
 .card.red {
