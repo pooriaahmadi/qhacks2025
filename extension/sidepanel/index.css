@@ -16,8 +16,6 @@ html, body {
   min-width: 360px;
 }
 
-
-
 .container {
   padding: 20px;
   display: flex;
@@ -49,6 +47,16 @@ html, body {
   flex-direction: column;
   padding: 0 10px;
   gap: 13px;
+}
+
+.cards > .problems > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Inter", serif;
+  font-weight: 200;
+  width: 100%;
+  text-align: center;
 }
 .card {
   border-radius: 5px;
