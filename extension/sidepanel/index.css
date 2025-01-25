@@ -49,12 +49,16 @@ html, body {
   gap: 13px;
 }
 
-.cards > .problems > h3 {
+body {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body > h3 {
   justify-content: space-between;
   font-family: "Inter", serif;
-  font-weight: 200;
+  font-weight: 400;
   width: 100%;
   text-align: center;
 }
