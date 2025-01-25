@@ -12,7 +12,7 @@
 <title>TLDR.AI</title>
 
 <body>
-  <div class="container">
+  <div class="container" onclick="test">
     <div>
       <h1>TLDR.AI</h1>
       <h4>Don't sign your life away.</h4>
@@ -77,10 +77,15 @@
 
   </div>
   <script src="popup.js"></script>
+
+  <footer>
+    <p>We carry no legal responsibility for any of our actions. Pls give us a PlayStation! xoxo</p>
+  </footer>
 </body>
-<footer>
-  <p>We carry no legal responsibility for any of our actions. Pls give us a PlayStation! xoxo</p>
-</footer>
-</div>
+<script>
+  const test = () => {
+    console.log("test");
+  }
+</script>
 
 </html>
