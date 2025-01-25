@@ -35,8 +35,8 @@ def root():
 @app.post("/generation")
 def generation_post(record: RecordForm, session: SessionDep) -> Record:
     query = select(Record).where(Record.domain == record.domain)
-    
-    if query:
+    results = session.exec(query)
+    if results.all().count() != 0:
         return {"message": "domain exists in database"}
     else:
         response = fafo.TOS_json(record.text)
