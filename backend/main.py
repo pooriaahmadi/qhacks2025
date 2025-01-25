@@ -2,9 +2,10 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from database import RecordForm, Record, create_db_and_tables, SessionDep
 from sqlmodel import select
+import fuckaroundandfindout as fafo
 from dotenv import load_dotenv
 import os
-
+import json
 load_dotenv()
 
 COHERE_KEY = os.environ["COHERE_KEY"]
@@ -32,7 +33,7 @@ def root():
 
 @app.post("/generation")
 def generation_post(record: RecordForm, session: SessionDep) -> Record:
-    response = "LLM response"
+    response = fafo.TOS_json(record.text)
     record = Record(domain=record.domain, response=response, text=record.text)
 
     # Save in the database
@@ -50,5 +51,7 @@ def generation_get(domain: str, session: SessionDep) -> Optional[Record]:
     record = results.first()
     if not record:
         raise HTTPException(status_code=404, detail="Record not found")
-
+    
+    record.response = json.loads(record.response)
+    record.text = None
     return record
