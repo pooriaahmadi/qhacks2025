@@ -3,20 +3,90 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
+<title>TLDR.AI</title>
 
 <body>
-  <h1>Google Gemini</h1>
-  <textarea id="input-prompt" placeholder='QHACKS2025"' cols="30" rows="5"></textarea>
-  <div>
-    <input type="range" id="temperature" name="temperature" min="0" max="2" step="0.01" value="1" />
-    <label for="temperature">Temperature: <span id="label-temperature">1</span></label>
+  <a href="loading.html">Hello</a>
+  <div class="container" onclick="test">
+    <div>
+      <h1>TLDR.AI</h1>
+      <h4>Don't sign your life away.</h4>
+    </div>
+    <div>
+      <img src="images/icon.png" alt="">
+    </div>
   </div>
-  <button id="button-prompt" class="primary" disabled>Run</button>
-  <div id="response" class="text" hidden></div>
-  <div id="loading" class="text" hidden><span class="blink">...</span></div>
-  <div id="error" class="text" hidden></div>
-  <script src="../dist/sidepanel.bundle.js" type="module"></script>
+  <h3 id="web-name"></h3>
+  <div class="cards">
+    <div class="card red">
+      <div class="wrapper">
+        <div class="text">
+          <h2>They want to steal your data and break into your house.</h2>
+        </div>
+        <div class="triangle">
+          <img src="images/triangle.svg">
+        </div>
+      </div>
+      <p class="hidden">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit ipsam praesentium unde
+        nihil soluta assumenda distinctio molestiae quo exercitationem tenetur, doloribus deleniti sint ab maiores
+        asperiores atque, totam vel.</p>
+    </div>
+
+    <div class="card orange">
+      <div class="wrapper">
+        <div class="text">
+          <h2>Your photos are being sold on the black market.</h2>
+        </div>
+        <div class="triangle">
+          <img src="images/triangle.svg">
+        </div>
+      </div>
+      <p class="hidden">That's right. Memes and calculus notes. Watch out.</p>
+    </div>
+
+    <div class="card green">
+      <div class="wrapper">
+        <div class="text">
+          <h2>They know where you live, and they want to hit you with sticks.</h2>
+        </div>
+        <div class="triangle">
+          <img src="images/triangle.svg">
+        </div>
+      </div>
+      <p class="hidden">I heard their aim isn't very good, so you should be fine. Hopefully.</p>
+    </div>
+
+    <div class="card red">
+      <div class="wrapper">
+        <div class="text">
+          <h2>Your data will not be sold to advertisers.</h2>
+        </div>
+        <div class="triangle">
+          <img src="images/triangle.svg">
+        </div>
+      </div>
+      <p class="hidden">Because it's being sold to ME. ;)</p>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+  <script src="index.js"></script>
+
+  <footer>
+    <p>We carry no legal responsibility for any of our actions.</p>
+    <p>Pls give us a PlayStation! xoxo</p>
+  </footer>
 </body>
+<script>
+  const test = () => {
+    console.log("test");
+  }
+</script>
 
 </html>
