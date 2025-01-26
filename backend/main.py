@@ -36,7 +36,7 @@ def root():
 def generation_post(record: RecordForm, session: SessionDep) -> Record:
     query = select(Record).where(Record.domain == record.domain)
     results = session.exec(query)
-    if results.all().count() != 0:
+    if len(results.all()) != 0:
         return {"message": "domain exists in database"}
     else:
         response = fafo.TOS_json(record.text)
@@ -57,7 +57,7 @@ def generation_get(domain: str, session: SessionDep) -> Optional[Record]:
     record = results.first()
     if not record:
         raise HTTPException(status_code=404, detail="Record not found")
-    
+
     record.response = json.loads(record.response)
     record.text = None
     return record
