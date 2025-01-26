@@ -68,26 +68,60 @@ const getCurrentURL = () => {
   });
 };
 async function getContent(url) {
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0",
+      Accept:
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.5",
+      "Accept-Encoding": "gzip, deflate, br",
+      Connection: "keep-alive",
+      "Upgrade-Insecure-Requests": "1",
+    },
+  });
   const html = await response.text();
 
   // Parse the HTML content
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, "text/html");
-
   // Find all <a> tags
   const links = Array.from(doc.querySelectorAll("a")); // Get all anchor tags
 
   return links; // Return the links if needed
 }
 
+function removeJavaScriptAndHTML(input) {
+  // Remove script tags and their content
+  const noScript = input.replace(/<script[\s\S]*?<\/script>/gi, "");
+
+  // Remove all HTML tags
+  const noHTML = noScript.replace(/<\/?[^>]+>/gi, "");
+
+  return noHTML.trim(); // Trim extra whitespace
+}
 async function getTOSText(url) {
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0",
+      Accept:
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.5",
+      "Accept-Encoding": "gzip, deflate, br",
+      Connection: "keep-alive",
+      "Upgrade-Insecure-Requests": "1",
+    },
+  });
   const html = await response.text();
 
   // Parse the HTML content
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  const doc = new DOMParser().parseFromString(
+    DOMPurify.sanitize(html),
+    "text/html"
+  );
 
   return doc.body.innerText;
 }
@@ -123,9 +157,11 @@ getCurrentURL().then((url) => {
       "contract agreement",
       "legal obligations",
     ];
-
     const tosLinks = links.filter((link) => {
-      const text = link.innerText.toLowerCase();
+      let text = link.innerText.toLowerCase();
+      if (text.length == 0) {
+        text = link.textContent.toLowerCase();
+      }
       const href = link.href.toLowerCase();
       return keywords.some(
         (keyword) => text.includes(keyword) || href.includes(keyword)
@@ -146,7 +182,7 @@ getCurrentURL().then((url) => {
           .then((response) => {
             stopLoading();
             // return to main page
-            window.location.href = "index.html";
+            window.location.href = `index.html?domainName=${domainName}`;
           })
           .catch((err) => {
             stopLoading();
