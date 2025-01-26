@@ -4,7 +4,6 @@ import cohere
 def TOS_json(TOS):
     co = cohere.ClientV2("Kg8tacIRXTmZcez9wyOCjckUyo6kCH3tIQAx7Yb7")
     TOS = TOS[:18000] if len(TOS) > 18000 else TOS
-    print(TOS)
     response = co.chat(
         model="command-r-plus-08-2024",
         messages=[
@@ -43,5 +42,4 @@ def TOS_json(TOS):
             },
         },
     )
-    print(response.message)
     return response.message.content[0].text
