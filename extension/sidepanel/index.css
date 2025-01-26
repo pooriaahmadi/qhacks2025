@@ -1,82 +1,145 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: #1f1f1f;
-  background-color: #f2f2f2;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #0f1a3a;
+  color: white;
+  min-width: 360px;
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container > div >h4 {
   font-size: 16px;
-  padding: 8px;
 }
 
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
+.container > div > h1 {
+  font-size: 40px;
 }
 
-button {
-  background: #333;
+.container > div> img {
+  width: 53px;
+  height: 61px;
+}
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  gap: 13px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body > h3 {
+  justify-content: space-between;
+  font-family: "Inter", serif;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+}
+.card {
+  border-radius: 5px;
+  padding: 15px;
   color: white;
-  border-radius: 8px;
-  border: none;
-  min-width: 100px;
-  padding: 8px;
-  margin: 16px 0;
-  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.card > .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.card div.text {
+  width: 80%;
+}
+.card .triangle {
+  width: 15px;
+  height: 16px;
+  transition: all 0.3s ease-in-out;
+}
+.card.open .triangle {
+  transform: rotate(180deg);
+}
+.card .triangle > img {
+  width: 100%;
+  height: 100%;
 }
 
-button.primary {
-  background: #333;
-  color: white;
-}
 
-button.secondary {
-  background: #ccc;
+.card h2 {
+  text-align: left;
+}
+.card h2 {
+  font-size: 16px;
   color: black;
 }
 
-button[disabled] {
-  background: #ddd;
-  color: #aaa;
+.card.red {
+  background-color: #ff4d4d;
 }
 
-input[type='range'] {
-  margin-top: 16px;
-  accent-color: black;
+.card.orange {
+  background-color: #ff9933;
 }
 
-textarea {
-  --padding: 32px;
-  width: calc(100% - var(--padding));
-  max-width: calc(100% - var(--padding));
+.card.green {
+  background-color: #4caf50;
 }
 
-.text,
-textarea {
-  background-color: white;
-  padding: 16px;
-  border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-  outline: none;
+.card.blue {
+  background-color: #2196f3;
 }
 
-.blink {
-  animation: 1s ease-in-out 1s infinite reverse both running blink;
+footer {
+  margin-top: 20px;
+  font-size: 10px;
 }
 
-@keyframes blink {
-  25% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0.5;
-  }
+.hidden { 
+  display: none; 
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  color: black;
+  text-align: left;
 }
 
-[hidden] {
-  display: none;
+.card.open .hidden { 
+  display: block; 
+}
+
+.card { 
+  cursor: pointer; 
+  transition: max-height 0.3s ease;
 }

@@ -1,14 +1,15 @@
 {
-  "name": "Google Gemini Demo",
+  "name": "TLDR.vip",
   "version": "0.1",
   "manifest_version": 3,
-  "description": "Try the Gemini Models.",
+  "description": "Skip the contracts.",
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["sidePanel"],
+  "permissions": ["sidePanel", "tabs"],
+  "host_permissions": ["<all_urls>"],
   "side_panel": {
-    "default_path": "sidepanel/index.html"
+    "default_path": "sidepanel/loading.html"
   },
   "action": {
     "default_icon": {
@@ -17,6 +18,6 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "default_title": "Open Chat Interface"
+    "default_title": "Don't lose your rights!"
   }
 }
