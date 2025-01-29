@@ -1,8 +1,14 @@
+from dotenv import load_dotenv
+import os
 import cohere
+
+load_dotenv()
+
+COHERE_KEY = os.environ["COHERE_KEY"]
 
 
 def TOS_json(TOS):
-    co = cohere.ClientV2("Kg8tacIRXTmZcez9wyOCjckUyo6kCH3tIQAx7Yb7")
+    co = cohere.ClientV2(COHERE_KEY)
     TOS = TOS[:18000] if len(TOS) > 18000 else TOS
     response = co.chat(
         model="command-r-plus-08-2024",

@@ -3,13 +3,8 @@ from fastapi import FastAPI, HTTPException
 from database import RecordForm, Record, create_db_and_tables, SessionDep
 from sqlmodel import select
 import fuckaroundandfindout as fafo
-from dotenv import load_dotenv
-import os
+
 import json
-
-load_dotenv()
-
-COHERE_KEY = os.environ["COHERE_KEY"]
 
 
 def lifespan(app: FastAPI):
